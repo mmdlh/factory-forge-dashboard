@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { WeldingPlatform } from "../components/welding/WeldingPlatform";
+export const Route = createFileRoute("/energy")({ head: () => ({ meta: [{ title: "能耗中心｜弧光智造" }, { name: "description", content: "焊接工厂电气碳一体化能源分析。" }, { property: "og:title", content: "能耗中心｜弧光智造" }, { property: "og:description", content: "实时洞察焊接生产能源流向与效率。" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <WeldingPlatform page="energy" /> });

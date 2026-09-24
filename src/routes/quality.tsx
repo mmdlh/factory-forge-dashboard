@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { WeldingPlatform } from "../components/welding/WeldingPlatform";
+export const Route = createFileRoute("/quality")({ head: () => ({ meta: [{ title: "质量分析｜弧光智造" }, { name: "description", content: "焊缝质量、缺陷趋势与全流程追溯分析。" }, { property: "og:title", content: "质量分析｜弧光智造" }, { property: "og:description", content: "焊接质量能力与缺陷追溯中心。" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <WeldingPlatform page="quality" /> });
