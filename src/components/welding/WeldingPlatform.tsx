@@ -1,5 +1,5 @@
 import { ClientOnly, Link } from "@tanstack/react-router";
-import { lazy, Suspense, type ReactNode } from "react";
+import { lazy, Suspense, type CSSProperties, type ReactNode } from "react";
 import {
   Activity, AlertTriangle, Bot, ChevronRight, CircleGauge, Factory, Flame,
   Gauge, HardHat, Radio, ShieldCheck, Sparkles, Wrench, Zap,
@@ -32,7 +32,7 @@ const pageData: Record<PageKey, { eyebrow: string; title: string; sub: string; s
 };
 
 function Chart({ kind, variant = 0 }: { kind: ChartKind; variant?: number }) {
-  return <ClientOnly fallback={<div className="chart-loading">数据接入中</div>}>{() => <Suspense fallback={<div className="chart-loading">数据接入中</div>}><WeldingChart kind={kind} variant={variant} /></Suspense>}</ClientOnly>;
+  return <ClientOnly fallback={<div className="chart-loading">数据接入中</div>}><Suspense fallback={<div className="chart-loading">数据接入中</div>}><WeldingChart kind={kind} variant={variant} /></Suspense></ClientOnly>;
 }
 
 function Glass({ title, kicker, children, className = "" }: { title: string; kicker?: string; children: ReactNode; className?: string }) {
@@ -88,7 +88,7 @@ function Safety({ page }: { page: PageKey }) {
 
 export function WeldingPlatform({ page }: { page: PageKey }) {
   const data = pageData[page];
-  return <div className={`platform page-${page}`} style={{ "--factory-bg": `url(${factoryBackground})` } as React.CSSProperties}>
+  return <div className={`platform page-${page}`} style={{ "--factory-bg": `url(${factoryBackground})` } as CSSProperties}>
     <header className="topbar"><Link to="/" className="brand"><span className="brand-mark"><Factory /></span><div><b>弧光智造</b><small>ARCWELD DIGITAL FACTORY</small></div></Link><nav>{nav.map(({ to, label, icon: Icon }) => <Link key={to} to={to} activeProps={{ className: "nav-active" }} activeOptions={{ exact: to === "/" }}><Icon /><span>{label}</span></Link>)}</nav><div className="system-live"><i />系统在线</div></header>
     <main><div className="page-heading"><div><p>{data.eyebrow}</p><h1>{data.title}</h1><span>{data.sub}</span></div><div className="shift-chip"><Activity /><span>当前班次</span><strong>早班 A</strong></div></div>
       {page === "overview" && <Overview page={page} />}{page === "machines" && <Machines page={page} />}{page === "quality" && <Quality page={page} />}{page === "process" && <Process page={page} />}{page === "maintenance" && <Maintenance page={page} />}{page === "energy" && <Energy page={page} />}{page === "safety" && <Safety page={page} />}
