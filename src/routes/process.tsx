@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { WeldingPlatform } from "../components/welding/WeldingPlatform";
+export const Route = createFileRoute("/process")({ head: () => ({ meta: [{ title: "工艺管理｜弧光智造" }, { name: "description", content: "焊接工艺配方、参数窗口与版本管理。" }, { property: "og:title", content: "工艺管理｜弧光智造" }, { property: "og:description", content: "统一管理 WPS 工艺与执行参数。" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <WeldingPlatform page="process" /> });

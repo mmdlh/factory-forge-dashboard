@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { WeldingPlatform } from "../components/welding/WeldingPlatform";
+export const Route = createFileRoute("/safety")({ head: () => ({ meta: [{ title: "安全预警｜弧光智造" }, { name: "description", content: "焊接现场人员、环境和设备安全风险监测。" }, { property: "og:title", content: "安全预警｜弧光智造" }, { property: "og:description", content: "工厂安全风险联合感知与实时预警。" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <WeldingPlatform page="safety" /> });
