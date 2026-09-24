@@ -55,7 +55,7 @@ const rows: Record<PageKey, string[][]> = {
 
 function DataTable({ page }: { page: PageKey }) {
   const headers = page === "overview" ? ["产品", "产线", "完成量", "达成率", "状态"] : page === "machines" ? ["设备", "电流 / 电压", "送丝速度", "健康度", "状态"] : page === "quality" ? ["检测编号", "产品", "缺陷类型", "尺寸", "处置"] : page === "process" ? ["工艺编号", "适用产品", "核心参数", "版本", "状态"] : page === "maintenance" ? ["工单", "设备", "任务", "负责人", "状态"] : page === "energy" ? ["用能单元", "能耗", "占比", "同比", "状态"] : ["时间", "监测点", "事件", "进度", "等级"];
-  return <div className="table-wrap"><table><thead><tr>{headers.map((h) => <th key={h}>{h}</th>)}</tr></thead><tbody>{rows[page].map((row) => <tr key={row[0]}>{row.map((cell, i) => <td key={cell}>{i === row.length - 1 ? <span className={`status ${cell.includes("异常") || cell.includes("关注") || cell.includes("二级") ? "warn" : ""}`}><b />{cell}</span> : cell}</td>)}</tr>)}</tbody></table></div>;
+  return <div className="table-wrap"><table><thead><tr>{headers.map((h) => <th key={h}>{h}</th>)}</tr></thead><tbody>{rows[page].map((row) => <tr key={row[0]}>{row.map((cell, i) => <td key={`${i}-${cell}`}>{i === row.length - 1 ? <span className={`status ${cell.includes("异常") || cell.includes("关注") || cell.includes("二级") ? "warn" : ""}`}><b />{cell}</span> : cell}</td>)}</tr>)}</tbody></table></div>;
 }
 
 function Overview({ page }: { page: PageKey }) {
